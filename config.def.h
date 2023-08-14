@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
+#include "fibonacci.c"
 
 #define SESSION_FILE "/tmp/dwm-session"
 
@@ -62,6 +63,8 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 	{ "DD",       doubledeck },
 	{ "|||",      col },
+	{ "[@]",      spiral },
+	{ "[\\]",      dwindle },
 	{ NULL,       NULL },
 };
 
@@ -132,9 +135,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_w,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[6]} },
 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
