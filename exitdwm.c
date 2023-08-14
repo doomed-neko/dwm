@@ -45,7 +45,7 @@ void exitdwm ()
 			S_FORMAT (EXIT) "\n"
 			S_FORMAT (REBOOT) "\n"
 			S_FORMAT (SHUTDOWN)
-			"\" | rofi -dmenu -p exit: | " S_FORMAT_CLEAR
+			"\" | rofi -dmenu -l 6 -p exit: | " S_FORMAT_CLEAR
 		,
 		"r"
 	);
