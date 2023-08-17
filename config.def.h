@@ -85,7 +85,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *roficmd[] = {"rofi","-show","drun","-show-icons",NULL};
 static const char *termcmd[]  = { "st", NULL };
 static const char *ffcmd[]  = { "firefox", NULL };
-static const char *codecmd[]  = { "/code/bin/code", NULL };
+static const char *codecmd[]  = { "code", NULL };
 static const char *rofiwcmd[] = {"sh","/home/x/.etc/suckless/scripts/wallmode",NULL};
 
 
