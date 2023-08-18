@@ -114,6 +114,11 @@ static const char *flameshot[] = { "flameshot", "gui","--clipboard", NULL };
 static const char *flameshotf[] = { "flameshot", "gui", NULL };
 
 
+// wifi menu
+//
+static const char *rofiwifi[] = {"/home/x/.etc/suckless/scripts/wifi.sh", NULL };
+
+
 #include "exitdwm.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -191,6 +196,11 @@ static const Key keys[] = {
 	// flameshot
 	{ 0, XK_Print, spawn, {.v = flameshot}},
 	{ ShiftMask, XK_Print, spawn, {.v = flameshotf}},
+
+
+
+	//wifi menu
+	{ MODKEY|ControlMask, XK_w, spawn, {.v= rofiwifi}},
 
 
 };
