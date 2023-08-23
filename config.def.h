@@ -87,6 +87,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *ffcmd[]  = { "firefox", NULL };
 static const char *codecmd[]  = { "code", NULL };
 static const char *rofiwcmd[] = {"sh","/home/x/.etc/suckless/scripts/wallmode",NULL};
+static const char *getquote[] = {"python3", "/home/x/.etc/suckless/scripts/quote.py",NULL};
 
 
 
@@ -126,6 +127,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_u,      spawn,          {.v = ffcmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = rofiwcmd } },
 	{ MODKEY,                       XK_y,      spawn,          {.v = codecmd } },
+	{ MODKEY|ShiftMask,                       XK_g,      spawn,          {.v = getquote } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
