@@ -99,8 +99,8 @@ static const char *mutevol[]    = { "/usr/bin/amixerl", "set", "Master", "toggle
 
 
 // Brightness controllers
-static const char *light_up[]   = { "/usr/bin/light",   "-A", "5", NULL };
-static const char *light_down[] = { "/usr/bin/light",   "-U", "5", NULL };
+static const char *light_up[]   = { "brightnessctl",   "set", "+5%", NULL };
+static const char *light_down[] = { "brightnessctl",   "set", "5%-", NULL };
 
 /* Control Media Players */
 static const char *medplaypausecmd[] = { "playerctl", "play-pause", NULL };
