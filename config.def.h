@@ -119,6 +119,8 @@ static const char *flameshotf[] = { "flameshot", "gui", NULL };
 //
 static const char *rofiwifi[] = {"/home/x/.etc/suckless/scripts/wifi.sh", NULL };
 
+static const char *kbdx[] = {"/home/x/.etc/suckless/scripts/xkbb", NULL};
+
 
 #include "exitdwm.c"
 static const Key keys[] = {
@@ -198,6 +200,9 @@ static const Key keys[] = {
 	// flameshot
 	{ 0, XK_Print, spawn, {.v = flameshot}},
 	{ ShiftMask, XK_Print, spawn, {.v = flameshotf}},
+
+	// keyboard layout
+    {MODKEY|ControlMask,           XK_space,    spawn,             {.v = kbdx}},
 
 
 
