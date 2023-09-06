@@ -15,7 +15,7 @@ static const double activeopacity   = 1.0f;     /* Window opacity when it's focu
 static const double inactiveopacity = 0.875f;   /* Window opacity when it's inactive (0 <= opacity <= 1) */
 static       Bool bUseOpacity       = True;     /* Starts with opacity on any unfocused windows */
 
-static const char *fonts[]          = { "FiraCode Nerd Font:size=10" };
+static const char *fonts[]          = { "FiraCode Nerd Font:size=10"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#282a36";
 static const char col_gray2[]       = "#282a36";
@@ -146,7 +146,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_d,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY|ShiftMask,             XK_r,      setlayout,      {.v = &layouts[6]} },
