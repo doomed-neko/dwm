@@ -15,7 +15,7 @@ static const double activeopacity   = 1.0f;     /* Window opacity when it's focu
 static const double inactiveopacity = 0.875f;   /* Window opacity when it's inactive (0 <= opacity <= 1) */
 static       Bool bUseOpacity       = True;     /* Starts with opacity on any unfocused windows */
 
-static const char *fonts[]          = { "FiraCode Nerd Font:size=10" };
+static const char *fonts[]          = { "FiraCode Nerd Font:size=10"};
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#282a36";
 static const char col_gray2[]       = "#282a36";
@@ -84,6 +84,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = {"rofi","-show","drun","-show-icons",NULL};
+static const char *rofissh[] = {"rofi","-show","ssh",NULL};
 static const char *termcmd[]  = { "st", NULL };
 static const char *ffcmd[]  = { "firefox", NULL };
 static const char *codecmd[]  = { "code", NULL };
@@ -127,6 +128,7 @@ static const char *kbdx[] = {"/home/x/.etc/suckless/scripts/xkbb", NULL};
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,      spawn,          {.v = roficmd } },
+	{ MODKEY|ShiftMask,             XK_s,          spawn,          {.v = rofissh } },
 	{ MODKEY,                       XK_u,      spawn,          {.v = ffcmd } },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = rofiwcmd } },
 	{ MODKEY,                       XK_y,      spawn,          {.v = codecmd } },
