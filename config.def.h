@@ -80,60 +80,19 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
+#define STATUSBAR "dwmblocks"
+
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *roficmd[] = {"rofi","-show","drun","-show-icons",NULL};
-static const char *rofissh[] = {"rofi","-show","ssh",NULL};
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *ffcmd[]  = { "firefox", NULL };
-static const char *codecmd[]  = { "code", NULL };
-static const char *rofiwcmd[] = {"sh","/home/x/.etc/suckless/scripts/wallmode",NULL};
-static const char *getquote[] = {"python3", "/home/x/.etc/suckless/scripts/quote.py",NULL};
 
 
-
-// volume controllers
-static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
-static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
-static const char *mutevol[]    = { "/usr/bin/amixerl", "set", "Master", "toggle", NULL };
-
-
-
-// Brightness controllers
-static const char *light_up[]   = { "brightnessctl",   "set", "+5%", NULL };
-static const char *light_down[] = { "brightnessctl",   "set", "5%-", NULL };
-
-/* Control Media Players */
-static const char *medplaypausecmd[] = { "playerctl", "play-pause", NULL };
-static const char *mednextcmd[] = { "playerctl", "next", NULL };
-static const char *medprevcmd[] = { "playerctl", "previous", NULL };
-
-
-// flameshot
-
-
-static const char *flameshot[] = { "flameshot", "gui","--clipboard", NULL };
-static const char *flameshotf[] = { "flameshot", "gui", NULL };
-
-
-// wifi menu
-//
-static const char *rofiwifi[] = {"/home/x/.etc/suckless/scripts/wifi.sh", NULL };
-
-static const char *kbdx[] = {"/home/x/.etc/suckless/scripts/xkbb", NULL};
 
 
 #include "exitdwm.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,      spawn,          {.v = roficmd } },
-	{ MODKEY|ShiftMask,             XK_s,          spawn,          {.v = rofissh } },
-	{ MODKEY,                       XK_u,      spawn,          {.v = ffcmd } },
-	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = rofiwcmd } },
-	{ MODKEY,                       XK_y,      spawn,          {.v = codecmd } },
-	{ MODKEY|ShiftMask,                       XK_g,      spawn,          {.v = getquote } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -177,45 +136,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      exitdwm,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 
-
-
-	// volume
-	{ 0,                           XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                           XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,                           XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-
-
-	// birghtness
-
-	{ 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = light_up} },
-	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = light_down} },
-
-
-
-	/* Keybindings for Media play/pause/next/previous */
-	{ 0, XF86XK_AudioPlay, spawn, {.v = medplaypausecmd } },
-	{ 0, XF86XK_AudioNext, spawn, {.v = mednextcmd } },
-	{ 0, XF86XK_AudioPrev, spawn, {.v = medprevcmd } },
-
-
-
-
-
-
-
-	// flameshot
-	{ 0, XK_Print, spawn, {.v = flameshot}},
-	{ ShiftMask, XK_Print, spawn, {.v = flameshotf}},
-
-	// keyboard layout
-    {MODKEY|ControlMask,           XK_space,    spawn,             {.v = kbdx}},
-
-
-
-	//wifi menu
-	{ MODKEY|ControlMask, XK_w, spawn, {.v= rofiwifi}},
-
-
 };
 
 /* button definitions */
@@ -225,7 +145,9 @@ static const Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
+	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
+	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
